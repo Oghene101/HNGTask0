@@ -67,11 +67,11 @@ app.MapGet("/weatherforecast", () =>
 app.MapGet("/details", () => new
     {
         email = "ogheneruemu.engineer@gmail.com",
-        date = DateTime.UtcNow.ToString("O"),
-        gitHubUrl = "https://github.com/Oghene101/HNGTask0"
+        current_datetime = DateTime.UtcNow.ToString("O"),
+        github_url = "https://github.com/Oghene101/HNGTask0"
     })
     .WithName("GetDetails");
-
+    
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
