@@ -48,7 +48,7 @@ app.MapGet("/details", () => new
     {
         email = "ogheneruemu.engineer@gmail.com",
         date = DateTime.UtcNow.ToString("O"),
-        gitHubUrl = ""
+        gitHubUrl = "https://github.com/Oghene101/HNGTask0"
     })
     .WithName("GetDetails");
 
