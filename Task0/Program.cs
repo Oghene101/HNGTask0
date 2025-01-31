@@ -7,9 +7,30 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+    
+    options.AddPolicy("AllowSpecificOrigin", policy =>
+    {
+        policy.WithOrigins("SpecificOriginToBeDefined")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseHttpsRedirection();
+app.UseCors(builder.Environment.IsDevelopment() ? "AllowAll" : "AllowSpecificOrigin");
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -22,7 +43,6 @@ if (app.Environment.IsDevelopment())
     );
 }
 
-app.UseHttpsRedirection();
 app.MapControllers();
 
 var summaries = new[]
