@@ -87,6 +87,8 @@ class Program
 
 ---
 
+[HNG C# Devs](https://hng.tech/hire/csharp-developers)
+
 ## License
 
 This project is open-source and available under the MIT License.
