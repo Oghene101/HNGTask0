@@ -33,25 +33,15 @@ app.UseCors(builder.Environment.IsDevelopment() ? "AllowAll" : "AllowSpecificOri
 
 if (app.Environment.IsDevelopment())
 {
-    // app.MapOpenApi();
-    // app.MapScalarApiReference(options =>
-    //     {
-    //         options.WithTitle("Task0")
-    //             .WithTheme(ScalarTheme.BluePlanet)
-    //             .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
-    //     }
-    // );
+    app.MapOpenApi();
+    app.MapScalarApiReference(options =>
+        {
+            options.WithTitle("Task0")
+                .WithTheme(ScalarTheme.BluePlanet)
+                .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
+        }
+    );
 }
-
-app.MapOpenApi();
-app.MapScalarApiReference(options =>
-    {
-        options.WithTitle("Task0")
-            .WithTheme(ScalarTheme.BluePlanet)
-            .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
-    }
-);
-
 
 app.MapControllers();
 
